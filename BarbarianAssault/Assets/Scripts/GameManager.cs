@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-
+    // Mark testing sourcetree integration.
 	public static GameManager instance = null;
 
 	[SerializeField] GameObject player;
