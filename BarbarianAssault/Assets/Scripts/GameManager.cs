@@ -99,24 +99,54 @@ public class GameManager : MonoBehaviour {
 
 		if (currentSpawnTime > generatedSpawnTime) {
 			currentSpawnTime = 0;
+            if(currentLevel == 1)
+            {
+                if (enemies.Count <= currentLevel)
+                {
+                    int randomNumber = Random.Range(0, spawnPoints.Length - 1);
+                    GameObject spawnLocation = spawnPoints[randomNumber];
+                    int randomEnemy = Random.Range(0, 3);
+                    if (randomEnemy == 0)
+                    {
+                        newEnemy = Instantiate(soldier) as GameObject;
+                    }
+                    else if (randomEnemy == 1)
+                    {
+                        newEnemy = Instantiate(ranger) as GameObject;
+                    }
+                    else if (randomEnemy == 2)
+                    {
+                        newEnemy = Instantiate(tanker) as GameObject;
+                    }
 
-			if (enemies.Count < currentLevel) {
+                    newEnemy.transform.position = spawnLocation.transform.position;
 
-				int randomNumber = Random.Range (0, spawnPoints.Length - 1);
-				GameObject spawnLocation = spawnPoints [randomNumber];
-				int randomEnemy = Random.Range (0, 3);
-				if (randomEnemy == 0) {
-					newEnemy = Instantiate (soldier) as GameObject;
-				} else if (randomEnemy == 1) {
-					newEnemy = Instantiate (ranger) as GameObject;
-				} else if (randomEnemy == 2) {
-					newEnemy = Instantiate (tanker) as GameObject;
-				}
+                }
+            }
+            else
+            {
+                if (enemies.Count < currentLevel)
+                {
+                    int randomNumber = Random.Range(0, spawnPoints.Length - 1);
+                    GameObject spawnLocation = spawnPoints[randomNumber];
+                    int randomEnemy = Random.Range(0, 3);
+                    if (randomEnemy == 0)
+                    {
+                        newEnemy = Instantiate(soldier) as GameObject;
+                    }
+                    else if (randomEnemy == 1)
+                    {
+                        newEnemy = Instantiate(ranger) as GameObject;
+                    }
+                    else if (randomEnemy == 2)
+                    {
+                        newEnemy = Instantiate(tanker) as GameObject;
+                    }
 
-				newEnemy.transform.position = spawnLocation.transform.position;
-					
-			}
+                    newEnemy.transform.position = spawnLocation.transform.position;
 
+                }
+            }
 			if (killedEnemies.Count == currentLevel && currentLevel != finalLevel) {
 
 				enemies.Clear ();
