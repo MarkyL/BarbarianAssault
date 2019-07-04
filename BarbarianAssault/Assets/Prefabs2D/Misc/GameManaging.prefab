@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9083653980024430118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9083653980024430116}
+  - component: {fileID: 9083653980024430117}
+  m_Layer: 0
+  m_Name: GameManaging
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9083653980024430116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083653980024430118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3373773, y: -0.7154403, z: -27.521196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9083653980024430117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083653980024430118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d02f67184955b1428583509a0618d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalWaves: 10
+  spawnPoint: {fileID: 1509263100345756655, guid: 283338c061369864088789f0bd3d0756,
+    type: 3}
+  enemies:
+  - {fileID: 670151159919236753, guid: 93c7b65c5f4d72e4fb934a14751e8de1, type: 3}
+  - {fileID: -4517471944043390247, guid: aa02766983a85104481b5d872dc6798c, type: 3}
+  - {fileID: 3536698173510440030, guid: fe7a5b9d71563cb428ff33b16be16bb0, type: 3}
+  totalEnemies: 8
+  maxEnemiesOnScreen: 3
+  totalMoneyLabel: {fileID: 0}
+  GameStatusImage: {fileID: 0}
+  nextWaveBtnLabel: {fileID: 0}
+  escapedLabel: {fileID: 0}
+  waveLabel: {fileID: 0}
+  GameStatusLabel: {fileID: 0}
+  waveNumber: 0
+  playBtnLbl: {fileID: 0}
+  playBtn: {fileID: 0}
+  EnemyList: []
