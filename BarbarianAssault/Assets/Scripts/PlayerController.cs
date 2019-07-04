@@ -100,6 +100,6 @@ public class PlayerController : MonoBehaviour {
 		em.enabled = true;
 		fireTrail.SetActive (false);
 
-	}
+    }
 
 }

@@ -53,9 +53,9 @@ public class PlayerHealth : MonoBehaviour {
 			if (other.tag == "Weapon") {
 				takeHit ();
 				timer = 0;
-			}
-		}
-	}
+			} 
+        }
+    }
 
 	void takeHit() {
 

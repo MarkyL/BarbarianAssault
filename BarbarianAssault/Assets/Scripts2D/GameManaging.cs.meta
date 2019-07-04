@@ -3,7 +3,18 @@ guid: 2d02f67184955b1428583509a0618d81
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spawnPoint: {fileID: 1509263100345756655, guid: 283338c061369864088789f0bd3d0756,
+      type: 3}
+  - totalMoneyLabel: {instanceID: 0}
+  - GameStatusImage: {instanceID: 0}
+  - nextWaveBtnLabel: {instanceID: 0}
+  - escapedLabel: {instanceID: 0}
+  - waveLabel: {instanceID: 0}
+  - GameStatusLabel: {instanceID: 0}
+  - GameStatusBtn: {instanceID: 0}
+  - playBtnLbl: {instanceID: 0}
+  - playBtn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

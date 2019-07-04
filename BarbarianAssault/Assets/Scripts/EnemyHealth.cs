@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour {
 
@@ -24,13 +25,13 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 		GameManager.instance.RegisterEnemy (this);
 		rigidBody = GetComponent<Rigidbody> ();
 		capsuleCollider = GetComponent<CapsuleCollider> ();
-		nav = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+		Nav = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
 		audio = GetComponent<AudioSource> ();
 		isAlive = true;
@@ -80,7 +81,7 @@ public class EnemyHealth : MonoBehaviour {
 
 		GameManager.instance.KilledEnemy (this);
 		capsuleCollider.enabled = false;
-		nav.enabled = false;
+		Nav.enabled = false;
 		anim.SetTrigger ("EnemyDie");
 		rigidBody.isKinematic = true;
 		StartCoroutine (removeEnemy());
@@ -94,5 +95,24 @@ public class EnemyHealth : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		Destroy (gameObject);
 	}
+
+    public NavMeshAgent Nav
+    {
+        get
+        {
+            return nav;
+        }
+
+        set
+        {
+            nav = value;
+        }
+    }
+
+    public void freezeEnemy(bool isFrozen)
+    {
+        Nav.enabled = !isFrozen;
+        //GetComponent<EnemyAttack>().enabled = !isFrozen;
+    }
 
 }

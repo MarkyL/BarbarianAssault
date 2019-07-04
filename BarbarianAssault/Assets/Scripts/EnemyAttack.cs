@@ -35,9 +35,7 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 	IEnumerator attack() {
-
-		if (playerInRange && !GameManager.instance.GameOver && enemyHealth.IsAlive) {
-
+		if (isAttackEnabled()) {
 			anim.Play ("Attack");
 			yield return new WaitForSeconds (timeBetweenAttacks);
 		}
@@ -57,4 +55,17 @@ public class EnemyAttack : MonoBehaviour {
 			weapon.enabled = false;
 		}
 	}
+
+    // Attacking enabled if 
+    // 1. navigation enabled
+    // 2. game is not over.
+    // 3. enemy is alive.
+    public bool isAttackEnabled()
+    {
+        return
+            enemyHealth.Nav.enabled == true && playerInRange &&
+            !GameManager.instance.GameOver &&
+            enemyHealth.IsAlive;
+    }
+
 }

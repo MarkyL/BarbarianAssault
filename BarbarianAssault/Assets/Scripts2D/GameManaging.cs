@@ -158,13 +158,16 @@ public class GameManaging : Singleton<GameManaging> {
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TowerManager.Instance.disableDragSprite();
-            TowerManager.Instance.towerBtnPressed = null;
-        } else if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Debug.Log("onF1Pressed");
-            SceneManager.LoadScene("Menu");
+            SceneManager.UnloadSceneAsync("Level1");
+            GameManager.instance.freezeEnemies(false);
         }
+        //    TowerManager.Instance.disableDragSprite();
+        //    TowerManager.Instance.towerBtnPressed = null;
+        //} else if (Input.GetKeyDown(KeyCode.F1))
+        //{
+        //    Debug.Log("onF1Pressed");
+        //    SceneManager.LoadScene("Menu");
+        //}
         
     }
 

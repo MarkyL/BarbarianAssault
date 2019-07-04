@@ -40,9 +40,7 @@ public class RangerAttack: MonoBehaviour {
 	}
 
 	IEnumerator attack() {
-
-		if (playerInRange && !GameManager.instance.GameOver && enemyHealth.IsAlive) {
-
+		if (isAttackEnabled()) { 
 			anim.Play ("Attack");
 			yield return new WaitForSeconds (timeBetweenAttacks);
 		}
@@ -65,7 +63,17 @@ public class RangerAttack: MonoBehaviour {
 		newArrow.transform.position = fireLocation.position;
 		newArrow.transform.rotation = transform.rotation;
 		newArrow.GetComponent<Rigidbody> ().velocity = transform.forward * 25f;
-
-
 	}
-}
+
+    // Attacking enabled if 
+    // 1. navigation enabled
+    // 2. game is not over.
+    // 3. enemy is alive.
+    public bool isAttackEnabled()
+    {
+        return 
+            enemyHealth.Nav.enabled == true && playerInRange && 
+            !GameManager.instance.GameOver && 
+            enemyHealth.IsAlive;
+        }
+    }

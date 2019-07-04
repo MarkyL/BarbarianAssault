@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour {
 
 		currentSpawnTime += Time.deltaTime;
 		currentPowerUpSpawnTime += Time.deltaTime;
+        
 	}
 
 	public void PlayerHit(int currentHP) {
@@ -167,4 +168,14 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds (3f);
 		SceneManager.LoadScene ("GameMenu");
 	}
+    
+    public void freezeEnemies(bool isFrozen)
+    {
+        foreach(EnemyHealth eh in enemies ){
+            //eh.Nav.enabled = !isFrozen;
+            eh.freezeEnemy(isFrozen);
+        }
+    }
+
+
 }
