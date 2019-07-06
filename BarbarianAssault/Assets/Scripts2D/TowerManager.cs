@@ -20,7 +20,7 @@ public class TowerManager : Singleton<TowerManager>
     void Update()
     {
         //If the left mouse button is clicked.
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && towerBtnPressed != null)
         {
             //Get the mouse position on the screen and send a raycast into the game world from that position.
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
