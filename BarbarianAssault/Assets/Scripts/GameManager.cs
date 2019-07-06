@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour {
     // Mark testing sourcetree integration.
 	public static GameManager instance = null;
 
-	[SerializeField] GameObject player;
+    [SerializeField] GameObject sceneContainer;
+    [SerializeField] GameObject player;
 	[SerializeField] GameObject[] spawnPoints;
 	[SerializeField] GameObject[] powerUpSpawns;
 	[SerializeField] GameObject tanker;
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+    //TODO: discuss spawn logic with Omri (code duplication).
 	IEnumerator spawn() {
 
 		if (currentSpawnTime > generatedSpawnTime) {
@@ -121,7 +123,7 @@ public class GameManager : MonoBehaviour {
                     }
 
                     newEnemy.transform.position = spawnLocation.transform.position;
-
+                    newEnemy.transform.SetParent(sceneContainer.transform, false);
                 }
             }
             else
@@ -145,7 +147,7 @@ public class GameManager : MonoBehaviour {
                     }
 
                     newEnemy.transform.position = spawnLocation.transform.position;
-
+                    newEnemy.transform.SetParent(sceneContainer.transform, false);
                 }
             }
 			if (killedEnemies.Count == currentLevel && currentLevel != finalLevel) {
@@ -184,7 +186,8 @@ public class GameManager : MonoBehaviour {
 				}
 
 				newPowerup.transform.position = spawnLocation.transform.position;
-			}
+                newPowerup.transform.SetParent(sceneContainer.transform, false);
+            }
 		}
 
 		yield return null;
@@ -207,5 +210,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void toggleSceneVisibilityState(bool isVisible)
+    {
+        sceneContainer.SetActive(isVisible);
+        Debug.Log("sceneCotnainer active state = " + sceneContainer.active);
+    }
 
 }

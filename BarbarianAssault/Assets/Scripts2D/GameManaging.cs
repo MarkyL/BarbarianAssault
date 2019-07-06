@@ -160,7 +160,8 @@ public class GameManaging : Singleton<GameManaging> {
         {
             SceneManager.UnloadSceneAsync("Level1");
             GameManager.instance.freezeEnemies(false);
-        }
+            GameManager.instance.toggleSceneVisibilityState(true);
+        }   
         //    TowerManager.Instance.disableDragSprite();
         //    TowerManager.Instance.towerBtnPressed = null;
         //} else if (Input.GetKeyDown(KeyCode.F1))

@@ -23,6 +23,7 @@ public class EarthDefenderIntegrator : MonoBehaviour
             SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
             Debug.Log("before");
             GameManager.instance.freezeEnemies(true);
+            GameManager.instance.toggleSceneVisibilityState(false);
             Debug.Log("after");
         }
     }
