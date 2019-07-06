@@ -20,12 +20,24 @@ public class EarthDefenderIntegrator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerInside)
         {
-            SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
-            Debug.Log("before");
+            StartCoroutine(load2DSceneAsync());
+            // Freezing enemies is something we want to do right when the user clicks to move to 2D.       
             GameManager.instance.freezeEnemies(true);
-            GameManager.instance.toggleSceneVisibilityState(false);
-            Debug.Log("after");
         }
+    }
+
+    IEnumerator load2DSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
+            yield return null;
+        }
+        Debug.Log("Loading completed, Toggling 3D scene visibility.");
+        GameManager.instance.toggleSceneVisibilityState(false);
     }
 
     void OnTriggerEnter(Collider other)
