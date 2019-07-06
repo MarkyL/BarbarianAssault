@@ -63,6 +63,7 @@ public class EnemyAttack : MonoBehaviour {
     public bool isAttackEnabled()
     {
         return
+            enemyHealth.Nav != null &&
             enemyHealth.Nav.enabled == true && playerInRange &&
             !GameManager.instance.GameOver &&
             enemyHealth.IsAlive;
