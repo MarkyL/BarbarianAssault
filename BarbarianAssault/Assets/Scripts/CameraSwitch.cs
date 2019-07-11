@@ -45,6 +45,27 @@ public class CameraSwitch : MonoBehaviour
 
     }
 
+    public void toggleAudioListener(bool isAudioOff)
+    {
+        int cameraPositionCounter = PlayerPrefs.GetInt("CameraPosition");
+
+        if (cameraPositionCounter == 0)
+        {
+
+            mainCam.GetComponent<AudioSource>().enabled = isAudioOff;
+            mainAudLis.enabled = isAudioOff;
+
+        }
+
+        if (cameraPositionCounter == 1)
+        {
+            secondaryCam.GetComponent<AudioSource>().enabled = isAudioOff;
+            secondaryAudLis.enabled = isAudioOff;
+        }
+
+
+    }
+
     void changeCameraPosition(int cameraPosition)
     {
         if (cameraPosition > 1)

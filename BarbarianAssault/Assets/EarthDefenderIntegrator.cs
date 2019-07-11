@@ -23,6 +23,7 @@ public class EarthDefenderIntegrator : MonoBehaviour
             StartCoroutine(load2DSceneAsync());
             // Freezing enemies is something we want to do right when the user clicks to move to 2D.       
             GameManager.instance.freezeEnemies(true);
+            GameManager.instance.toggleAudioListener(false);
         }
     }
 

@@ -178,6 +178,7 @@ public class GameManaging : Singleton<GameManaging> {
         {
             currentState = gameStatus.gameover;
             playBtnPressed(true);
+            GameManager.instance.toggleAudioListener(true);
             StartCoroutine(unloadSceneWithData(false));
         }
 

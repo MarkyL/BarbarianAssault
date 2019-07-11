@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject arrow;
 	[SerializeField] GameObject healthPowerUp;
 	[SerializeField] GameObject speedPowerUp;
-	[SerializeField] Text levelText;
+    [SerializeField] GameObject cameraSwitch;
+    [SerializeField] Text levelText;
 	[SerializeField] Text endGameText;
 	[SerializeField] int maxPowerUps = 4;
 	[SerializeField] int finalLevel = 20;
@@ -224,6 +225,11 @@ public class GameManager : MonoBehaviour {
             //eh.Nav.enabled = !isFrozen;
             eh.freezeEnemy(isFrozen);
         }
+    }
+
+    public void toggleAudioListener(bool isAudioOff)
+    {
+        cameraSwitch.GetComponent<CameraSwitch>().toggleAudioListener(isAudioOff);
     }
 
     public void toggleSceneVisibilityState(bool isVisible)
