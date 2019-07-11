@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    // Mark testing sourcetree integration.
+
 	public static GameManager instance = null;
 
     [SerializeField] GameObject sceneContainer;
@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Text endGameText;
 	[SerializeField] int maxPowerUps = 4;
 	[SerializeField] int finalLevel = 20;
+    [SerializeField] GameObject powerUpRewardHealth;
+    [SerializeField] GameObject powerUpRewardSpeed;
 
-	private bool gameOver = false;
+    private bool gameOver = false;
 	private int currentLevel;
 	private float generatedSpawnTime = 1;
 	private float currentSpawnTime = 0;
@@ -75,7 +77,6 @@ public class GameManager : MonoBehaviour {
 
 		endGameText.GetComponent<Text> ().enabled = false;
 		StartCoroutine (spawn ());
-		StartCoroutine (powerUpSpawn ());
 		currentLevel = 1;
 	}
 	
@@ -186,13 +187,28 @@ public class GameManager : MonoBehaviour {
 				}
 
 				newPowerup.transform.position = spawnLocation.transform.position;
-                newPowerup.transform.SetParent(sceneContainer.transform, false);
-            }
+               // newPowerup.transform.SetParent(sceneContainer.transform, false);
+          }
 		}
 
 		yield return null;
 		StartCoroutine (powerUpSpawn ());
 	}
+
+    public void spawnRewardPowerUps()
+    {
+        GameObject healthReward = Instantiate(healthPowerUp) as GameObject;
+        healthReward.transform.position = powerUpRewardHealth.transform.position;
+        //healthReward.transform.SetParent(sceneContainer.transform, false);
+
+        GameObject speedReward = Instantiate(speedPowerUp) as GameObject;
+        speedReward.transform.position = powerUpRewardSpeed.transform.position;
+        //speedReward.transform.SetParent(sceneContainer.transform, false);
+
+        Debug.Log("spawnRewardPowerUps");
+
+        StartCoroutine(powerUpSpawn());
+    }
 
 	IEnumerator endGame(string outcome) {
 
@@ -214,6 +230,20 @@ public class GameManager : MonoBehaviour {
     {
         sceneContainer.SetActive(isVisible);
         Debug.Log("sceneCotnainer active state = " + sceneContainer.active);
+    }
+
+    private bool hasWon2D = false;
+
+    public bool HasWon2D
+    {
+        get
+        {
+            return hasWon2D;
+        }
+        set
+        {
+            hasWon2D = value;
+        }
     }
 
 }

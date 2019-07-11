@@ -18,7 +18,7 @@ public class EarthDefenderIntegrator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerInside)
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerInside && !GameManager.instance.HasWon2D)
         {
             StartCoroutine(load2DSceneAsync());
             // Freezing enemies is something we want to do right when the user clicks to move to 2D.       
@@ -28,8 +28,10 @@ public class EarthDefenderIntegrator : MonoBehaviour
 
     IEnumerator load2DSceneAsync()
     {
+        Debug.Log("load2dSceneAsync");
+        
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level1", LoadSceneMode.Additive);
-
+        
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
@@ -40,12 +42,23 @@ public class EarthDefenderIntegrator : MonoBehaviour
         GameManager.instance.toggleSceneVisibilityState(false);
     }
 
+    private bool hasRecievedReward = false;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             Debug.Log("A player entered EarthDefender collider");
-            instructionsText.SetActive(true);
+            if (!hasRecievedReward)
+            {
+                if (GameManager.instance.HasWon2D)
+                {
+                    instructionsText.GetComponent<TextMesh>().text = "Congratulations!!! \n Collect your power ups";
+                    GameManager.instance.spawnRewardPowerUps();
+                    hasRecievedReward = true;
+                }
+                instructionsText.SetActive(true);
+            }
             isPlayerInside = true;
             //instructionsText.GetComponent<TextMesh>().text = "TEST";
             //instructionsText.text = "test";

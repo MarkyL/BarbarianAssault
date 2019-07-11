@@ -69,8 +69,6 @@ public class Enemy : MonoBehaviour
             GameManaging.Instance.TotalEscaped++;
             GameManaging.Instance.RoundEscaped++;
             GameManaging.Instance.UnRegister(this);
-            GameManaging.Instance.isWaveOver();
-            Destroy(gameObject);
         } else if (other.tag == "Projectile")
         {
             Projectile newP = other.gameObject.GetComponent<Projectile>();
