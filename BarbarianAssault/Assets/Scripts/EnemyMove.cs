@@ -23,7 +23,6 @@ public class EnemyMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
 		if (nav.enabled == true &&!GameManager.instance.GameOver && enemyHealth.IsAlive) {
 			nav.SetDestination (player.position);
 		} else if ((!GameManager.instance.GameOver || GameManager.instance.GameOver) && !enemyHealth.IsAlive) {
