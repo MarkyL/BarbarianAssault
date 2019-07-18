@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour {
 		currentSpawnTime += Time.deltaTime;
 		currentPowerUpSpawnTime += Time.deltaTime;
         
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.UnloadSceneAsync("Level");
+            SceneManager.LoadScene("GameMenu");
+        }
 	}
 
 	public void PlayerHit(int currentHP) {
@@ -99,7 +104,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-    //TODO: discuss spawn logic with Omri (code duplication).
 	IEnumerator spawn() {
 
 		if (currentSpawnTime > generatedSpawnTime) {
